@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Orders() {
@@ -9,7 +9,6 @@ function Orders() {
   async function getUserOrders() {
     try {
       const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${cartOwner}`)
-      console.log(response.data)
       setOrdersList(response.data)
     } catch (error) {
       console.log(error.response?.data.message)

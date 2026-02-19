@@ -1,7 +1,6 @@
 import { FaRegHeart, FaStar } from "react-icons/fa6";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCartAction } from "../Actions/cartAction";
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
@@ -31,7 +30,6 @@ function ProductCard(props) {
           toast.success(response.data.message)
           getCart()
         }
-        console.log(response)
       } catch (error) {
         console.log(error)
       } finally {
@@ -50,7 +48,6 @@ function ProductCard(props) {
           headers: { token: token }
         })
         if (response.data.status === "success") {
-          console.log(response)
           toast.success(response.data.message)
         }
       } catch (error) {
@@ -69,7 +66,6 @@ function ProductCard(props) {
         headers: { token: token }
       })
       if (response.data.status === "success") {
-        console.log(response)
         toast.success(response.data.message)
         getWishlistProducts()
       }

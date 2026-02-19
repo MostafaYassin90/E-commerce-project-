@@ -16,7 +16,6 @@ function AppContextProvider({ children }) {
         setCart(response.data)
         if (response.data.data.cartOwner) {
           window.localStorage.setItem("cartOwner", response.data.data.cartOwner)
-          console.log(response.data.data.cartOwner)
         }
     } catch (error) {
         console.log(error)

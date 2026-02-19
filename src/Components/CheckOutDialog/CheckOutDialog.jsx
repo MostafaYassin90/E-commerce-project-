@@ -26,7 +26,6 @@ function CheckOutDialog(props) {
       if (response.data.status === "success") {
         window.location.href = response.data.session.url
       }
-      console.log(response)
     } catch (error) {
       console.log(error.response?.data.message || error.message)
     }

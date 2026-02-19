@@ -12,7 +12,6 @@ import { Toaster } from 'react-hot-toast';
 import AppContextProvider from './context/AppContext';
 import Categories from './Pages/Categories/Categories';
 import Brands from './Pages/Brands/Brands';
-import Profile from './Pages/Profile/Profile';
 import Orders from './Pages/Orders/Orders';
 import Cart from './Pages/Cart/Cart';
 import ProtectRoute from './Components/ProtectRoute';
@@ -36,7 +35,6 @@ const router = createBrowserRouter([
       { path: "/brands/:id", element: <BrandDetails /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
-      { path: "/profile", element: <ProtectRoute><Profile /></ProtectRoute> },
       { path: "/allorders", element: <ProtectRoute><Orders /></ProtectRoute> },
       { path: "/cart", element: <ProtectRoute><Cart /> </ProtectRoute> },
       { path: "/wishlist", element: <ProtectRoute><WishList /> </ProtectRoute> },

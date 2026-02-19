@@ -1,9 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Hero() {
   return (
-    <div className='py-16 h-[50vh] flex items-start justify-center'>
+    <div className='py-16 min-h-[50vh] flex items-start justify-center'>
 
       <div className='text-center flex flex-col gap-10'>
         <h2 className='text-6xl font-bold'>Welcome to ShopMart</h2>

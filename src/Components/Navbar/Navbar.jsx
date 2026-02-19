@@ -9,7 +9,7 @@ import { AppContext } from "../../context/AppContext";
 function Navbar() {
   const [showMenuLinks, setShowMenuLinks] = useState(false);
   const [showDropMenu, setShowDropMenu] = useState(false);
-  const { token, setToken , cart } = useContext(AppContext);
+  const { token, setToken, cart } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -52,7 +52,6 @@ function Navbar() {
                     token
                       ?
                       <>
-                        <li><Link to={"/profile"} className="block w-full py-1.5 px-3 hover:bg-gray-600">Profile</Link></li>
                         <li><Link to={"/wishlist"} className="block w-full py-1.5 px-3 hover:bg-gray-600">WishList</Link></li>
                         <li><Link to={"/allorders"} className="block w-full py-1.5 px-3 hover:bg-gray-600">orders</Link></li>
                         <li onClick={() => { logoutHandler() }} className="block w-full py-1.5 px-3 hover:bg-gray-600 cursor-pointer">Logout</li>

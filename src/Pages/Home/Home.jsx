@@ -7,8 +7,6 @@ import ProductCard from "../../Components/ProductCard";
 function Home() {
   const [productsList, setProductsList] = useState([]);
 
-  console.log(import.meta.env.VITE_BASE_URL)
-
 
   async function getAllProducts() {
     const response = await getAllProductsAction();
