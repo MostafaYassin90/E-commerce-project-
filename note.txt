@@ -1,0 +1,120 @@
+import { Link, NavLink } from "react-router-dom"
+import { FaUser } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { useState } from "react";
+
+function Navbar() {
+  const [showDropMenu, setShowDropMenu] = useState(false);
+
+  return (
+    <div className="py-3 px-[3vw] xl:px-[7vw] bg-[#0075ff]">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between">
+
+          <Link to={"/"} className="text-2xl font-bold text-white">Logo</Link>
+
+          <ul className="flex items-center gap-4 text-white text-lg">
+            <li> <NavLink to={"/"}>Home</NavLink> </li>
+            <li> <NavLink to={"/products"}>Products</NavLink> </li>
+            <li> <NavLink to={"/gallery"}>Gallery</NavLink> </li>
+            <li> <NavLink to={"/about"}>About</NavLink> </li>
+            <li> <NavLink to={"/contact"}>Contact</NavLink> </li>
+          </ul>
+
+          <div className="flex items-center gap-5">
+
+            <div className="relative">
+              <FaUser className="text-white text-xl cursor-pointer" onClick={() => {setShowDropMenu((prev) => {return !prev})}}/>
+              {
+                showDropMenu 
+                && 
+                <div className="absolute bg-gray-800 w-40 top-8.75 right-0 py-3 rounded-md">
+                <ul className="flex flex-col gap-2">
+                  <li><Link to={"/profile"} className="block text-white py-1.5 px-4 cursor-pointer">Profile</Link></li>
+                  <li><Link to={"/register"} className="block text-white py-1.5 px-4 cursor-pointer">Register</Link></li>
+                  <li><Link to={"/login"} className="block text-white py-1.5 px-4 cursor-pointer">Login</Link></li>
+                  <li className="block text-white py-1.5 px-4 cursor-pointer">Logout</li>
+                  <li><Link to={"/orders"} className="block text-white py-1.5 px-4 cursor-pointer">Orders</Link></li>
+                </ul>
+              </div>
+              }
+            </div>
+
+
+            <div>
+              <FaShoppingCart className="text-white text-xl cursor-pointer" />
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
+
+///////////////////////////////
+
+import { useRef, useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
+function Home() {
+  const [showDialog, setShowDialog] = useState(false);
+
+  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
+  const phoneRef = useRef(null);
+
+  const navigate = useNavigate()
+
+  function handleCollectUserData() {
+    const userDetails = {
+      username: usernameRef.current.value,
+      email: emailRef.current.value,
+      phone: phoneRef.current.value
+    }
+    console.log(userDetails)
+    setShowDialog(false)
+    navigate("/products")
+  }
+
+  return (
+    <div className="min-h-[70vh]">
+
+      <div>
+        <h1>Home</h1>
+        <button onClick={() => {setShowDialog(true)}} className="bg-[#0075ff] text-white py-2 px-4 rounded-md cursor-pointer">Show Dialog</button>
+      </div>
+
+      {
+        showDialog && 
+      <div className="fixed w-full h-screen top-0 left-0 flex items-center justify-center bg-black/50 z-9999">
+        <div className="relative bg-black/70 w-full sm:w-100 px-5 py-10 rounded-md shadow-md">
+          <IoMdClose onClick={() => {setShowDialog(false)}} className="absolute text-2xl text-white cursor-pointer top-3 right-3"/>
+          <div className="text-white mb-5">
+            <label htmlFor="username" className="block text-gray-200">Username</label>
+            <input ref={usernameRef} type="text" id="username" placeholder="Type Your Username" className="block w-full border border-gray-600 shadow-md mt-1 py-2 px-4 rounded-md placeholder:text-gray-300" />
+          </div>
+          <div className="text-white mb-5">
+            <label htmlFor="email" className="block text-gray-200">Email</label>
+            <input ref={emailRef} type="email" id="email" placeholder="Type Your Email" className="block w-full border border-gray-600 shadow-md mt-1 py-2 px-4 rounded-md placeholder:text-gray-300" />
+          </div>
+          <div className="text-white mb-5">
+            <label htmlFor="phone" className="block text-gray-200">Phone</label>
+            <input ref={phoneRef} type="number" id="phone" placeholder="Type Your Phone" className="block w-full border border-gray-600 shadow-md mt-1 py-2 px-4 rounded-md placeholder:text-gray-300" />
+          </div>
+          <button onClick={() => {handleCollectUserData()}} className="block w-full bg-black/50 text-white py-2 px-4 rounded-md cursor-pointer">Send</button>
+        </div>
+      </div>
+      }
+
+
+
+    </div>
+  )
+}
+
+export default Home;

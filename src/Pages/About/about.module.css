@@ -1,0 +1,14 @@
+.title {
+  font-size: 50px;
+  font-weight: bold;
+}
+.subTitle {
+  font-size: 30px;
+  color: #eee;
+  background-color: green;
+}
+
+.desc {
+  color: #999;
+  background-color: blue;
+}
