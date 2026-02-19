@@ -19,8 +19,7 @@ function CheckOutDialog(props) {
     }
 
     try {
-      const BASE_URL = import.meta.env.VITE_BASE_URL;
-      const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${BASE_URL}`, { shippingAddress: shippingAddress }, {
+      const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:5173`, { shippingAddress: shippingAddress }, {
         headers: { token: token }
       })
       if (response.data.status === "success") {
